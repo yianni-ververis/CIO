@@ -1,0 +1,264 @@
+<!-- NAVIGATION -->
+<!-- MANAGEMENT -->
+<div class="row page" ng-click="goTo('management')" ng-class="{'selected':(page==='management' && !isMobile)}">
+	<div class="col-xs-12">
+		<div class="row border-bottom">
+			<div class="col-xs-12 no-margin-padding-left-right">
+				<span class="v title-3">{{nav.management.title}}</span> 
+				<div class="indicators">
+					<i class="fa fa-circle" ng-class="{'red':nav.management.costBudgetDiff.red}" aria-hidden="true" data-toggle="tooltip" data-placement="top" data-original-title="{{nav.management.cost.title}}: {{nav.management.costBudgetDiff.data.qText}}"></i>
+					<i class="fa fa-circle" ng-class="{'red':nav.management.serviceGoalDiff.red}" aria-hidden="true" data-toggle="tooltip" data-placement="top" data-original-title="{{nav.management.service.title}}: {{nav.management.serviceGoalDiff.data.qText}}"></i>
+					</div>
+					<i class="fa fa-chevron-right color-gray-dark" aria-hidden="true"></i>
+				<!--<span class="status">
+					<button type="button" class="close" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</span>-->
+			</div>
+		</div>
+		<div class="row content no-padding-bottom">
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.management.cost.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				<!--<kpi expression="num(sum([Cost] * History* _CurrYTD),'#,##0')"></kpi>-->
+				{{nav.management.cost.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right">
+			</div>
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.management.budget.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				<!--<kpi expression="num(sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD),'#,##0')"></kpi>-->
+				{{nav.management.budget.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right" ng-class="{'red':nav.management.costBudgetDiff.red}">
+				<!--<kpi expression="num((sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD))/(sum([Cost] * History* _CurrYTD)),'#,###.#0%')"></kpi>-->
+				{{nav.management.costBudgetDiff.data.qText}}
+			</div>
+		</div>
+		<div class="row content border-bottom">
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.management.service.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				<!--<kpi expression="num(avg({<HDStatus=, _CurrYTD={1}>}SLA),'##.##%') "></kpi>-->
+				{{nav.management.service.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right">
+			</div>
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.management.serviceGoal.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.management.serviceGoal.value}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right" ng-class="{'red':nav.management.serviceGoalDiff.red}">
+				<!--<kpi expression="num((avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970,'##.##%') "></kpi>-->
+				{{nav.management.serviceGoalDiff.data.qText}}
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- CUSTOMER SERVICE -->
+<div class="row page" ng-click="goTo('customer-service')" ng-class="{'selected':(page==='customer-service' && !isMobile)}">
+	<div class="col-xs-12">
+		<div class="row border-bottom">
+			<div class="col-xs-12 no-margin-padding-left-right">
+				<span class="v title-3">{{nav.customerService.title}}</span>
+				<div class="indicators">
+					<i class="fa fa-circle" ng-class="{'red':nav.customerService.gradeDiff.red}" aria-hidden="true" data-toggle="tooltip" data-placement="top" data-original-title="{{nav.customerService.grade.title}}: {{nav.customerService.gradeDiff.data.qText}}"></i> 
+					<i class="fa fa-circle" ng-class="{'red':nav.customerService.ticketsDiff.red}" aria-hidden="true" data-toggle="tooltip" data-placement="top" data-original-title="{{nav.customerService.resolvedTickets.title}}: {{nav.customerService.ticketsDiff.value}}"></i>
+					<i class="fa fa-circle" ng-class="{'red':nav.customerService.resolutionDiff.red}" aria-hidden="true" data-toggle="tooltip" data-placement="top" data-original-title="{{nav.customerService.resolutionTime.title}}: {{nav.customerService.resolutionDiff.data.qText}}"></i>
+				</div>
+				<i class="fa fa-chevron-right color-gray-dark" aria-hidden="true"></i>
+				<!--<span class="status">
+					<button type="button" class="close" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</span>-->
+			</div>
+		</div>
+		<div class="row content no-padding-bottom">
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.customerService.grade.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				<!--<kpi expression="num(Avg({<HDStatus=, Year={$(=$(vMaxYear))}>}[Customer Grade]),'#,###.##')"></kpi>-->
+				{{nav.customerService.grade.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right">
+			</div>
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.customerService.gradeTarget.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.customerService.gradeTarget.value}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right" ng-class="{'red':nav.management.gradeDiff.red}">
+				<!--<kpi expression="num(Avg({<HDStatus=, Year={$(=$(vMaxYear))}>}[Customer Grade])-3.75,'#,###.#0%')"></kpi>-->				
+				{{nav.customerService.gradeDiff.data.qText}}
+			</div>
+		</div>
+		<div class="row content no-padding-bottom">
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.customerService.resolvedTickets.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				<!--<kpi expression="num(sum({<HDStatus = {'Resolved'} >}ticketCounter),'#,##0')"></kpi>-->			
+				{{nav.customerService.resolvedTickets.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right">
+			</div>
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.customerService.openTickets.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				<!--<kpi expression="num(sum({<HDStatus = {'Open', 'Pending'} >}ticketCounter),'#,##0')"></kpi>-->		
+				{{nav.customerService.openTickets.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right" ng-class="{'red':nav.management.ticketsDiff.red}">		
+				{{nav.customerService.ticketsDiff.value}}
+			</div>
+		</div>
+		<div class="row content no-padding-bottom">
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.customerService.resolutionTime.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				<!--<kpi expression="num(((Date(Avg([resolution time]))-Floor(Avg([resolution time])))*(24*60))/60, '##.##')"></kpi>-->
+				{{nav.customerService.resolutionTime.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right">
+			</div>
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.customerService.resolutionTimeTarget.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				<!--<kpi expression="num(((Date(0.08334)-Floor(0.08334))*(24*60))/60, '##.##')"></kpi>-->
+				{{nav.customerService.resolutionTimeTarget.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right" ng-class="{'red':nav.customerService.resolutionDiff.red}">
+				<!--<kpi expression="num((((Date(Avg([resolution time]))-Floor(Avg([resolution time])))*(24*60))-((Date(0.08334)-Floor(0.08334))*(24*60)))/60, '##.##')"></kpi>-->	
+				{{nav.customerService.resolutionDiff.data.qText}}
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Development -->
+<div class="row page" ng-click="goTo('development')" ng-class="{'selected':(page==='development' && !isMobile)}">
+	<div class="col-xs-12">
+		<div class="row border-bottom">
+			<div class="col-xs-12 no-margin-padding-left-right">
+				<span class="v title-3">{{nav.development.title}}</span>
+				<div class="indicators">
+					<i class="fa fa-circle" ng-class="{'red':nav.development.costDiff.red}" aria-hidden="true" data-toggle="tooltip" data-placement="top" data-original-title="{{nav.development.cost.title}}: {{nav.development.costDiff.data.qText}}"></i>
+					<i class="fa fa-circle" ng-class="{'red':nav.development.utilizationDiff.red}" aria-hidden="true" data-toggle="tooltip" data-placement="top" data-original-title="{{nav.development.cost.title}}: {{nav.development.utilizationDiff.data.qText}}"></i>
+				</div>
+				<i class="fa fa-chevron-right color-gray-dark" aria-hidden="true"></i>
+				<!--<span class="status">
+					<button type="button" class="close" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</span>-->
+			</div>
+		</div>
+		<div class="row content no-padding-bottom">
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.development.cost.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.development.cost.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right">
+			</div>
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.development.budget.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.development.budget.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right" ng-class="{'red':nav.development.costDiff.red}">
+				{{nav.development.costDiff.data.qText}}
+			</div>
+		</div>
+		<div class="row content border-bottom">
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.development.utilization.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.development.utilization.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right">
+			</div>
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.development.utilizationTarget.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.development.utilizationTarget.value}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right" ng-class="{'red':nav.development.utilizationDiff.red}">
+				{{nav.development.utilizationDiff.data.qText}}
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- HR -->
+<div class="row page" ng-click="goTo('hr')" ng-class="{'selected':(page==='hr' && !isMobile)}">
+	<div class="col-xs-12">
+		<div class="row border-bottom">
+			<div class="col-xs-12 no-margin-padding-left-right">
+				<span class="v title-3">{{nav.hr.title}}</span>
+				<div class="indicators">
+					<i class="fa fa-circle" ng-class="{'red':nav.hr.employeesDiff.red}" aria-hidden="true" data-toggle="tooltip" data-placement="top" data-original-title="{{nav.hr.employees.title}}: {{nav.hr.employeesDiff.data.qText}}"></i>
+					<i class="fa fa-circle" ng-class="{'red':nav.hr.utilizationDiff.red}" aria-hidden="true" data-toggle="tooltip" data-placement="top" data-original-title="{{nav.hr.utilization.title}}: {{nav.hr.utilizationDiff.data.qText}}"></i>
+				</div>
+				<i class="fa fa-chevron-right color-gray-dark" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div class="row content no-padding-bottom">
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.hr.employees.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.hr.employees.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right">
+			</div>
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.hr.sickLeave.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.hr.sickLeave.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right" ng-class="{'red':nav.hr.employeesDiff.red}">
+				{{nav.hr.employeesDiff.data.qText}}
+			</div>
+		</div>
+		<div class="row content border-bottom">
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.hr.utilization.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.hr.utilization.data.qText}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right">
+				{{nav.hr.utilization.diff}}
+			</div>
+			<div class="col-xs-5 no-margin-padding-left-right">
+				{{nav.hr.utilizationTarget.title}}
+			</div>
+			<div class="col-xs-4 no-margin-padding-left-right text-xs-right">
+				{{nav.hr.utilizationTarget.value}}
+			</div>
+			<div class="col-xs-3 no-margin-padding-left-right text-xs-right" ng-class="{'red':nav.hr.utilizationDiff.red}">
+				{{nav.hr.utilizationDiff.data.qText}}
+			</div>
+		</div>
+	</div>
+</div>

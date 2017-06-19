@@ -1,0 +1,62 @@
+/*.multi-get-object .qvobject {
+	height: 150px;
+}*/
+.multi-get-object .col-xs-4,
+.multi-get-object .col-sm-4,
+.multi-get-object .col-smd-4,
+.multi-get-object .col-xs-8,
+.multi-get-object .col-sm-8,
+.multi-get-object .col-md-8,
+.multi-get-object .col-xs-12,
+.multi-get-object .col-sm-12,
+.multi-get-object .col-md-12 {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.multi-get-object ul {
+	width: 100%;
+	height: 90%;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
+	display: flex;
+	flex-direction: row;
+}
+.multi-get-object li {
+	text-align: left;
+	padding-left: 10px;
+}
+.multi-get-object li a { 
+	color: black; 
+	text-decoration: none; 
+}
+.multi-get-object li a.active, 
+.multi-get-object li a:hover { 
+	color: #77b62a; 
+	text-decoration: underline; 
+}
+.multi-get-object #obj {
+	padding-top: 10px;
+}
+.multi-get-object .legend-holder {
+	display: inline-block;
+	margin-right: 15px;
+	font-size: 12px;
+}
+.multi-get-object .legend {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	margin-right: 5px;
+}
+@media (max-width: 775px) {
+	.multi-get-object ul {
+		-webkit-flex-direction: column !important;
+		flex-direction: column !important;
+	}
+	.multi-get-object li {
+		text-align: right !important;
+	}
+}

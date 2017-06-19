@@ -1,0 +1,44 @@
+<div class="multi-get-object">
+	<div class="row multi-get-object">
+		<div class="col-md-4 no-margin-padding-left" ng-if="!noLeftNav">
+			<div class="v text-1 padding-bottom-10 {{cssAnimation}}">{{ title }}</div>
+			<div class="dropdown" ng-if="isMobile">
+				<button class="btn btn-secondary dropdown-toggle btn-block v text-1 {{cssAnimation}}" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{items[current.pageIndex].objects[current.objectIndex].label}}
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<button class="dropdown-item" type="button" ng-repeat="item in items[current.pageIndex].objects" ng-click="setCurrentObject($index)">{{item.label}}</button>
+				</div>
+			</div>
+			<label class="lui-radiobutton padding-top-10 {{cssAnimation}}" ng-repeat="item in items" ng-if="items.length > 1">
+				<input class="lui-radiobutton__input" type="radio" name="myradio_{{id}}" ng-value="$index" ng-click="setCurrentPage($index)" ng-model="current.pageIndex">
+				<div class="lui-radiobutton__radio-wrap">
+					<span class="lui-radiobutton__radio"></span>
+					<span class="lui-radiobutton__radio-text">{{item.label}}</span>
+				</div>
+			</label>
+		</div>
+		<div ng-class="(noLeftNav || items.length <= 1) ? 'col-md-12' : 'col-md-8'">
+			<div class="row {{cssAnimation}}">
+				<div class="col-md-3" ng-if="noLeftNav || items.length <= 1">
+					{{items[0].label}}
+				</div>
+				<div class="col-md" ng-if="!isMobile">
+					<ul class="flex-items-md-right">
+						<li ng-repeat="item in items[current.pageIndex].objects" ><a ng-class="($index==current.objectIndex)?'active':''" ng-click="setCurrentObject($index)">{{item.label}}</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row {{cssAnimation}}">
+				<div class="col-md-12">
+					<div class="qvobject" id="obj"></div>
+				</div>
+			</div>
+			<div class="row" ng-if="items[current.pageIndex].legend">
+				<div class="col-md-12">
+					<div class="legend-holder" ng-repeat="item in items[current.pageIndex].legend"><div class="legend" ng-class="item.class"></div>{{item.value}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,104 @@
+<!-- controller.main -->
+
+<!-- Header -->
+<div class="row overview animated zoomInRight">
+	<div class="col-md-12">
+		<div class="v title-1">DEVELOPMENT OVERVIEW</div>
+		<h5>Development Summary</h5>
+		<p><kpi expression="If((num(sum({<Type={AD}>}[Cost Budget] * History* _CurrYTD),'#,##0') - num(sum({<Type={AD}>}[Cost] * History* _CurrYTD),'#,##0') )/num(sum({<Type={AD}>}[Cost] * History* _CurrYTD),'# ##0')<0,'Development needs some attention.  We are <span class=&quot;red&quot;>'& (num(sum({<Type={AD}>}[Cost Budget] * History* _CurrYTD) - sum({<Type={AD}>}[Cost] * History* _CurrYTD) / sum({<Type={AD}>}[Cost] * History* _CurrYTD),'$#,##0') )&' over budget</span> for the year to date.  Our Utilization Level is <span class=&quot;red&quot;>','Development is doing well.  We are <b>'& (num(sum({<Type={AD}>}[Cost Budget] * History* _CurrYTD) - sum({<Type={AD}>}[Cost] * History* _CurrYTD) /sum({<Type={AD}>}[Cost] * History* _CurrYTD),'$#,##0') &' under budget</b> for the year to date.  Our Utilization Level is <b>'))&If(Num((sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, System -= {Idle}, EmpType = {Employee} >} [Work %] * EmployeeCounter * [Work per cent] )/sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, EmpType = {Employee} >} [Work %] * EmployeeCounter))-0.87,'###%')<0,'also '&Num((sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, System -= {Idle}, EmpType = {Employee} >} [Work %] * EmployeeCounter * [Work per cent] )/sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, EmpType = {Employee} >} [Work %] * EmployeeCounter))-0.87,'###%')&' under</span> our goal of 87.0%.',Num((sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, System -= {Idle}, EmpType = {Employee} >} [Work %] * EmployeeCounter * [Work per cent] )/sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, EmpType = {Employee} >} [Work %] * EmployeeCounter))-0.87,'###%')&' over</b> our goal of 87.0%.')"></kpi></p>
+	</div>
+</div>
+
+
+<!-- KPIs -->
+<div class="row row-padding">
+	<div class="col-md-2 padding-bottom-10 animated zoomInRight ms250">
+		<div class="row v text-2 ">
+			2016 Cost YTD
+		</div>
+		<div class="row v text-1 bold">
+			$<kpi expression="num(sum({<Type={AD}>}[Cost] * History* _CurrYTD),'#,##0')" ></kpi>
+		</div>
+		<div class="row v text-3">
+			vs Budget
+		</div>
+		<div class="row red extra-padding">
+			<kpi expression="num(sum({<Type={AD}>}[Cost Budget] * History* _CurrYTD),'#,##0')"></kpi>
+		</div>
+		<div class="row background-gray">
+			<get-object qvid="'mjSmHq'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+	<div class="col-md-2 padding-bottom-10 animated zoomInRight ms500">
+		<div class="row v text-2">
+			Utilization YTD
+		</div>
+		<div class="row v text-1 bold">
+			<kpi expression="Num(sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, System -= {Idle}, EmpType = {Employee} >} [Work %] * EmployeeCounter * [Work per cent])/sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, EmpType = {Employee} >} [Work %] * EmployeeCounter),'###%')"></kpi>
+		</div>
+		<div class="row v text-3">
+			vs Goal of 87.0%
+		</div>
+		<div class="row extra-padding">
+			<kpi expression="Num((sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, System -= {Idle}, EmpType = {Employee} >} [Work %] * EmployeeCounter * [Work per cent] ) / sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, EmpType = {Employee} >} [Work %] * EmployeeCounter)) - 0.87,'###%')"></kpi>
+		</div>
+		<div class="row background-gray">
+			<get-object qvid="'TrUDVc'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+</div>
+<div class="row border-bottom row-padding">
+	<div class="col-md-12">
+		<div class="row v text-2">
+			<div class="col-sm no-margin-padding-left-right animated zoomInRight ms750">
+				Open Projects - Cost vs Budget YTD
+			</div>
+			<div class="col-sm-3 no-margin-padding-left-right animated zoomInRight ms750 text-xs-right">
+				<div class="legend-holder"><div class="legend qlik-blue"></div>Spend</div>
+				<div class="legend-holder"><div class="legend qlik-orange"></div>Budget</div>
+			</div>
+		</div>
+		<div class="row v text-3">
+			<div class="developmentBarChart col-md-4 col-sm-6 col-xs-12 no-margin-padding-left-right">
+				<div class="animated zoomInRight ms1000">New hardware</div>
+				<get-object qvid="'aergEj'" height="200" interaction="false" header="false" animation="zoomInRight ms1000"></get-object>
+			</div>
+			<div class="developmentBarChart col-md-4 col-sm-6 col-xs-12 no-margin-padding-left-right">
+				<div class="animated zoomInRight ms1250">New Intranet</div>
+				<get-object qvid="'jJgcY'" height="200" interaction="false" header="false" animation="zoomInRight ms1250"></get-object>
+			</div>
+			<div class="developmentBarChart col-md-4 col-sm-6 col-xs-12 no-margin-padding-left-right">
+				<div class="animated zoomInRight ms1000">Server Consolidation</div>
+				<get-object qvid="'BjSraQC'" height="200" interaction="false" header="false" animation="zoomInRight ms1500"></get-object>
+			</div>
+			<div class="developmentBarChart col-sm-4 no-margin-padding-left-right">
+				<div class="animated zoomInRight ms1000">Upgrade CRM</div>
+				<get-object qvid="'ZVfzyrn'" height="200" interaction="false" header="false" animation="zoomInRight ms1750"></get-object>
+			</div>
+			<div class="developmentBarChart col-sm-4 no-margin-padding-left-right">
+				<div class="animated zoomInRight ms2000">Upgraded Test Environment</div>
+				<get-object qvid="'RxpGV'" height="200" interaction="false" header="false" animation="zoomInRight ms2000"></get-object>
+			</div>
+			<div class="developmentBarChart col-sm-4 no-margin-padding-left-right">
+				<div class="animated zoomInRight ms2250">Upgrading SQL Server</div>
+				<get-object qvid="'wQPJRd'" height="200" interaction="false" header="false" animation="zoomInRight ms2250"></get-object>
+			</div>
+		</div>
+		<div class="row text-3">
+		</div>
+	</div>
+</div>
+
+<div class="row detail row-padding">
+	<div class="col-xs-12">
+		<div class="v title-2 animated zoomInRight ms2500">DEVELOPMENT DETAILS</div>
+	</div>
+</div>
+<div class="row row-padding">
+	<div class="col-xs-12 padding-bottom-40">
+		<get-object qvid="'GjFaE'" height="400" animation="zoomInRight ms2500"></get-object>
+	</div>
+	<div class="col-xs-12">
+		<get-object qvid="'gzjeWK'" height="400" animation="zoomInRight ms2750"></get-object>
+	</div>
+</div>

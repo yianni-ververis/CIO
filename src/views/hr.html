@@ -1,0 +1,83 @@
+<!-- controller.main -->
+
+<!-- Header -->
+<div class="row overview animated zoomInRight">
+	<div class="col-md-12">
+		<div class="v title-1">HR OVERVIEW</div>
+		<h5>HR Summary</h5>
+		<p>
+			<kpi expression="'HR is running well. There are '&num(Sum({<EmpType={Employee},Date={'$(vCurrentDate)'}>}EmployeeCounter),'#,##0')&' employees and the sick leave year to date is '&num(avg({<_CurrYTD={1}>}[Sick Leave]),'###.#%')&'.'&If((sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, System -= {Idle}, EmpType = {Employee} >} [Work %] * EmployeeCounter * [Work per cent] )/sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, EmpType = {Employee} >} [Work %] * EmployeeCounter))-0.87<0,' Our Utilization Level can improve. We are <span class=&quot;red&quot;>'&Num((sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, System -= {Idle}, EmpType = {Employee} >} [Work %] * EmployeeCounter * [Work per cent] )/sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, EmpType = {Employee} >} [Work %] * EmployeeCounter))-0.87,'###.##%')&'</span> under our utilization target of 87.0%.',' Our Utilization Level is good.  We are <strong>'&Num((sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, System -= {Idle}, EmpType = {Employee} >} [Work %] * EmployeeCounter * [Work per cent] )/sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, EmpType = {Employee} >} [Work %] * EmployeeCounter))-0.87,'###.##%')&'</strong> over our utilization target of 87.0%.')"></kpi>
+		</p>
+	</div>
+</div>
+
+<!-- KPIs -->
+<div class="row border-bottom row-padding">
+	<div class="col-md-4 padding-bottom-10 animated zoomInRight ms500">
+		<div class="row v text-2">
+			Sick Leave YTD
+		</div>
+		<div class="row v text-1 bold">
+			<kpi expression=" num(avg({<_CurrYTD={1}>}[Sick Leave]),'##%')"></kpi>
+		</div>
+		<div class="row">
+			vs Goal of 9.0%
+		</div>
+		<div class="row extra-padding">
+			<kpi expression="num(0.09-avg({<_CurrYTD={1}>}[Sick Leave]),'##%')"></kpi>
+		</div>
+		<div class="row2 background-gray">
+			<get-object qvid="'aKymAKh'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+	<div class="col-md-4 padding-bottom-10 animated zoomInRight ms750">
+		<div class="row v text-2">
+			Utilization YTD
+		</div>
+		<div class="row v text-1 bold">
+			<kpi expression="Num(sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, System -= {Idle}, EmpType = {Employee} >} [Work %] * EmployeeCounter * [Work per cent] )/sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, Current_Status=, EmpType = {Employee} >} [Work %] * EmployeeCounter),'###%')"></kpi>
+		</div>
+		<div class="row">
+			vs Target of 87.0%
+		</div>
+		<div class="row extra-padding">
+			<kpi expression="Num((sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, [Project Status]=, System -= {Idle}, [Employee Type] = {Employee} >} [Work %] * EmployeeCounter * [Work per cent] )/sum({<Year={$(=$(vMaxYear))}, _CurrYTD={1}, [Project Status]=, [Employee Type] = {Employee} >} [Work %] * EmployeeCounter))-0.87,'###%')"></kpi>
+		</div>
+		<div class="row2 background-gray">
+			<get-object qvid="'wyqLQV'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+	<div class="col-md-4 padding-bottom-10 animated zoomInRight ms250">
+		<div class="row v text-2">
+			Employees
+		</div>
+		<div class="row v text-1 bold">
+			<kpi expression="num(Sum({<EmpType={Employee},Date={'$(vCurrentDate)'}>}EmployeeCounter),'#,##0')"></kpi>
+		</div>
+		<div class="row">
+			&nbsp;
+		</div>
+		<div class="row red extra-padding">
+			&nbsp;
+		</div>
+		<!--<div class="row2 background-gray">
+			<get-object qvid="'nzrAG'" height="40" interaction="false"></get-object>
+		</div>-->
+	</div>
+</div>
+
+<div class="row detail">
+	<div class="col-xs-12">
+		<div class="v title-2 animated zoomInRight ms1000">HR DETAILS</div>
+	</div>
+</div>
+<div class="row row-padding animated zoomInRight ms1250">
+	<div class="col-xs-12">
+		<multi-get-object data="wagesEmployees" height="300" animation="zoomInRight ms1250" header="false"></multi-get-object>
+	</div>
+</div>
+<div class="row row-paddinganimated zoomInRight ms1500">
+	<div class="col-xs-12">
+		<multi-get-object data="utilization" height="300" animation="zoomInRight ms1500" header="false"></multi-get-object>
+	</div>
+</div>

@@ -1,0 +1,118 @@
+<!-- controller.main -->
+
+<!-- Header -->
+<div class="row overview animated zoomInRight">
+	<div class="col-md-12">
+		<div class="v title-1">{{vars.title}}</div>
+		<h5>Customer Service Summary</h5>
+		<p>
+			<kpi expression="'Currently, there are '& num(sum({<HDStatus = {'Open', 'Pending'} >}ticketCounter),'#,##0') &
+' open tickets.  The overall Grade for the year to date is ' & If(Avg({<HDStatus=, Year={$(=$(vMaxYear))}>}[Customer Grade])-3.75>=0, '<b>'&num(Avg({<HDStatus=, Year={$(=$(vMaxYear))}>}[Customer Grade])-3.75,'#,###.##')&' points above,</b> our goal.', '<span class=&quot;red&quot;>'&num(Avg({<HDStatus=, Year={$(=$(vMaxYear))}>}[Customer Grade])-3.75,'#,###.##')&' points below</span> our goal.') & If((((Date(Avg([resolution time]))-Floor(Avg([resolution time])))*(24*60))-((Date(0.08334)-Floor(0.08334))*(24*60)))/60>=0, ' Fortunately, the Average Resolution Time is <b>'&Num(((Date(Avg([resolution time]))-Floor(Avg([resolution time])))*(24*60))/60, '#,###.##') & ' hours above</b> our target of 12.5 hrs.',' Unfortunately, the Average Resolution Time is <span class=&quot;red&quot;>' & Num(((Date(Avg([resolution time]))-Floor(Avg([resolution time])))*(24*60))/60, '#,###.##') & ' hours below</span> our target of 12.5 hrs.')"></kpi> 
+		</p>
+	</div>
+</div>
+
+<!-- KPIs -->
+<div class="row border-bottom row-padding">
+	<div class="col-md-3 padding-bottom-10 animated zoomInRight ms250">
+		<div class="row v text-2">
+			Grade YTD
+		</div>
+		<div class="row v text-1 bold">
+			<kpi expression="num(Avg({<HDStatus=, Year={$(=$(vMaxYear))}>}[Customer Grade]),'##.##')"></kpi>
+		</div>
+		<div class="row">
+			vs Goal
+		</div>
+		<div class="row extra-padding ">
+			<kpi expression="num(Avg({<HDStatus=, Year={$(=$(vMaxYear))}>}[Customer Grade])-3.75,'##.##')"></kpi>
+		</div>
+		<div class="row2 background-gray">
+			<get-object qvid="'WbDYYF'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+	<div class="col-md-3 padding-bottom-10 animated zoomInRight ms500">
+		<div class="row v text-2">
+			Open Tickets YTD
+		</div>
+		<div class="row v text-1 bold">
+			<kpi expression="num(sum({<[Case Status] = {'Open', 'Pending'} >}ticketCounter),'#,##0')"></kpi>
+			
+		</div>
+		<div class="row">
+			&nbsp;
+		</div>
+		<div class="row extra-padding">
+			&nbsp;
+		</div>
+		<div class="row2 background-gray">
+			<get-object qvid="'kXwbMQ'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+	<div class="col-md-3 padding-bottom-10 animated zoomInRight ms750">
+		<div class="row v text-2">
+			Resolved Tickets YTD
+		</div>
+		<div class="row v text-1 bold">
+			<kpi expression="num(sum({<[Case Status] = {'Resolved'} >}ticketCounter),'#,##0')"></kpi>
+		</div>
+		<div class="row">
+			&nbsp;
+		</div>
+		<div class="row extra-padding">
+			&nbsp;
+		</div>
+		<div class="row2 background-gray">
+			<get-object qvid="'QBBa'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+	<div class="col-md-3 padding-bottom-10animated zoomInRight ms1000">
+		<div class="row v text-2">
+			Service Level
+		</div>
+		<div class="row v text-1 bold">
+			<kpi expression="num(avg({<HDStatus=, _CurrYTD={1}>}SLA),'##.##%')"></kpi>
+		</div>
+		<div class="row">
+			&nbsp;
+		</div>
+		<div class="row extra-padding">
+			&nbsp;
+		</div>
+		<div class="row2 background-gray">
+			<get-object qvid="'CxJT'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+</div>
+
+<div class="row detail animated zoomInRight ms1250">
+	<div class="col-xs-12">
+		<span class="v title-2">CUSTOMER SERVICE DETAILS</span>
+	</div>
+</div>
+<div class="row row-padding animated zoomInRight ms1250">
+	<div class="col-xs-12">
+		<multi-get-object data="multiGetObject" height="300" header="false" animation="zoomInRight ms1250"></multi-get-object>
+	</div>
+</div>
+<div class="row row-padding animated zoomInRight ms1500">
+	<div class="col-sm-12">
+		<get-object qvid="'rdtUQfa'" height="300" animation="zoomInRight ms1500"></get-object>
+	</div>
+	<!--<div class="col-sm-6">
+		<get-object qvid="'bwtpWc'" height="300" animation="zoomInRight ms1500"></get-object>
+	</div>-->
+</div>
+<div class="row row-padding">
+	<div class="col-xs-12 animated zoomInRight ms2250">
+		<multi-get-object data="multiGetObjectResolvedCases" height="300" header="false" left-nav="false" animation="zoomInRight ms2250"></multi-get-object>
+	</div>
+</div>
+<div class="row row-padding">
+	<div class="col-xs-12 v text-1 animated zoomInRight ms2750">
+		Additional Case Information
+	</div>
+	<div class="col-xs-12 animated zoomInRight ms2750">
+		<get-object qvid="'gCyRNd'" height="400" animation="zoomInRight ms2750"></get-object>
+	</div>
+</div>

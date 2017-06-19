@@ -1,0 +1,16 @@
+{
+	"name": "CIO",
+	"main": "index.html",
+	"version": "0.0.3",
+    "description": "CIO Dashboard",
+	"window": {
+		"toolbar": "true",
+		"icon": "favicon.ico",
+		"fullscreen": false,
+		"resizable" : true,
+		"width": 1024,
+		"height": 768,
+		"min_width": 400,
+		"min_height": 300
+	}
+}

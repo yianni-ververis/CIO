@@ -1,0 +1,56 @@
+{
+	"title": "CIO Dashboard",
+	"version": "1.8",
+	"name": "CIO",
+	"dist": "dist/",
+	"ga": "UA-XXXXXXXX-XX",
+	"local": {
+		"host": "localhost",
+		"port": 4848,
+		"prefix": "/",
+		"id": "CIO Dashboard.qvf",
+		"scriptsUrl": "https://localhost:3000/",
+		"baseUrl": "http://localhost:4848/resources"
+	},
+	"local2": {
+		"host": "usrad-jvs02.qliktech.com",
+		"port": 443,
+		"prefix": "/",
+		"id": "c42983aa-068b-48f4-adcb-517d074857e1",
+		"scriptsUrl": "https://localhost:3000/",
+		"baseUrl": "https://usrad-jvs02.qliktech.com/resources"
+	},
+	"staging": {
+		"host": "",
+		"port": 443,
+		"prefix": "/",
+		"id": "",
+		"scriptsUrl": "",
+		"baseUrl": ""
+	},
+	"production": {
+		"host": "",
+		"port": 443,
+		"prefix": "/",
+		"id": "",
+		"scriptsUrl": "",
+		"baseUrl": ""
+	},
+	"server": {},
+	"url": null,
+	"tasksDefault": [
+		"env",
+		"vendor",
+		"controllers",
+		"services",
+		"directives",
+		"lib",
+		"vendor-css",
+		"client-css",
+		"html",
+		"img"
+	],
+	"controllers": [],
+	"directives": [],
+	"services": []
+}

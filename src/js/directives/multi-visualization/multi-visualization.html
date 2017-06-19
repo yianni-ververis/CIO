@@ -1,0 +1,28 @@
+<div class="multi-visualization">
+	<div class="row multi-visualization">
+		<div class="col-xs-4" ng-if="!noLeftNav">
+			<div class="v text-1 padding-bottom-10 {{cssAnimation}}">{{ title }}</div>
+			<label class="lui-radiobutton {{cssAnimation}}" ng-repeat="item in items">
+				<input class="lui-radiobutton__input" type="radio" name="myradio_{{id}}" ng-value="$index" ng-click="setCurrentPage($index)" ng-model="current.pageIndex">
+				<div class="lui-radiobutton__radio-wrap">
+					<span class="lui-radiobutton__radio"></span>
+					<span class="lui-radiobutton__radio-text">{{item.label}}</span>
+				</div>
+			</label>
+		</div>
+		<div ng-class="noLeftNav ? 'col-xs-12' : 'col-xs-8'">
+			<div class="row {{cssAnimation}}">
+				<div class="col-xs-12" ng-class="{'no-margin-padding-left-right': noLeftNav}">
+					<ul class="flex-items-xs-right">
+						<li ng-repeat="item in items[current.pageIndex].objects" ><a ng-class="($index==current.objectIndex)?'active':''" ng-click="setCurrentObject($index)">{{item.label}}</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row {{cssAnimation}}">
+				<div class="col-xs-12">
+					<div class="qvobject" id="obj"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

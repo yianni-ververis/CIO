@@ -1,0 +1,57 @@
+.get-selection-object, 
+.get-selection-object .btn { 
+	font-size: 14px; 
+	padding: 10px 15px; 
+}
+.get-selection-object {
+	border-bottom: 1px solid #CCCCCC;
+}
+.get-selection-object ul {
+	width: 100%;
+	height: 90%;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
+	display: flex;
+	flex-direction: row;
+}
+.get-selection-object li{
+	font-size: 14px; 
+	text-align: left; 
+	padding-right: 15px; 
+}
+.get-selection-object li:first-child {
+    padding-left: 0;
+}
+.get-selection-object .dropdown-menu {
+	font-size: 14px; 
+	/*text-align: left; */
+	padding: 0; 
+}
+.get-selection-object li a { 
+	color: black; 
+	text-decoration: none; 
+}
+.get-selection-object li .fa-times-circle-o { 
+	cursor: pointer; 
+	color: red; 
+}
+.get-selection-object li a:hover { 
+	color: #77b62a; 
+	text-decoration: underline; 
+}
+.get-selection-object li.clear { 
+	font-style: italic;
+	color: blue; 
+}
+.get-selection-object .btn.btn-secondary.dropdown-toggle { 
+	background-color: white; 
+	padding: 0; 
+	border: 0; 
+} 
+.get-selection-object .no-selections {
+	font-style: italic;
+	color: #CCCCCC;
+}

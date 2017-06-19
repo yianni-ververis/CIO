@@ -1,0 +1,10 @@
+ <RoutingRules>
+	<RoutingRule>
+		<Condition>
+			<KeyPrefixEquals>docs/</KeyPrefixEquals>
+		</Condition>
+		<Redirect>
+			<ReplaceKeyPrefixWith>documents/</ReplaceKeyPrefixWith>
+		</Redirect>
+	</RoutingRule>
+</RoutingRules>

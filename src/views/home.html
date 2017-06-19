@@ -1,0 +1,120 @@
+<!-- controller.main -->
+
+<!-- Header -->
+<div class="row overview animated zoomInRight">
+	<div class="col-md-12">
+		<!--<h1>{{vars.title}}</h1>-->
+		<div class="v title-1">{{vars.title}}</div>
+		<h5>Management Summary</h5>
+		<p>
+			<kpi expression="If(sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD) < 0 and (avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970 < 0, 'The Budget is <span class=&quot;red&quot;>falling</span> in two areas.  We are <span class=&quot;red&quot;>'&num((sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD))*-1,'#,##0') & ' over</span> budget for the year to date.  Our Service Level is also <span class=&quot;red&quot;>'& num(((avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970)*-1,'##.##%')&' under</span> our goal of 99.7%.' , If(sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD) >= 0 and (avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970 >= 0, 'The Budget is improving in two areas.  We are <b>'&num((sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD)),'#,##0') & ' under</b> budget for the year to date.  Our Service Level is also <b>'& num(((avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970),'##.##%')&' over</b> our goal of 99.7%.', If(sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD) >= 0 and (avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970 < 0, 'The Budget is <span class=&quot;red&quot;>falling</span> in one area.  Our Service Level is <span class=&quot;red&quot;>'& num(((avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970)*-1,'##.##%')&' under</span> our goal of 99.7%.  But we are <b>'&num((sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD)),'#,##0') & ' under</b> budget for the year to date.' , If(sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD) < 0 and (avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970 >= 0, 'The Budget is <span class=&quot;red&quot;>falling</span> in one area.  We are <span class=&quot;red&quot;>'&num((sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD))*-1,'#,##0') & ' over</span> budget for the year to date. But pur Service Level is <b>'& num(((avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970),'##.##%')&' over</b> our goal of 99.7%.'))))"></kpi> 
+		</p>
+	</div>
+</div>
+
+<!-- KPIs -->
+<div class="row row-padding border-bottom">
+	<div class="col-md-2 no-margin-padding-right animated padding-bottom-10 zoomInRight ms250">
+		<div class="row v text-2">
+			2016 Cost YTD
+		</div>
+		<div class="row v text-1 bold">
+			$<kpi expression="num(sum([Cost] * History* _CurrYTD),'#,##0')"></kpi>
+		</div>
+		<div class="row">
+			vs Budget
+		</div>
+		<div class="row red extra-padding">
+			<kpi expression="num(sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD),'#,##0')"></kpi>
+		</div>
+		<div class="row extra-padding-mobile background-gray">
+			<get-object qvid="'VxkHHX'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+	<div class="col-md-2 no-margin-padding-right padding-bottom-10 animated zoomInRight ms500">
+		<div class="row v text-2 ">
+			Service Level YTD
+		</div>
+		<div class="row v text-1 bold">
+			<kpi expression="num(sum([Cost Budget] * History* _CurrYTD) - sum([Cost] * History* _CurrYTD),'#,##0')"></kpi>
+		</div>
+		<div class="row">
+			Service Level Diff
+		</div>
+		<div class="row extra-padding">
+			<kpi expression="num((avg({<HDStatus=, _CurrYTD={1}>}SLA))-.9970,'##.##%') "></kpi>
+		</div>
+		<div class="row extra-padding-mobile background-gray">
+			<get-object qvid="'pfFY'" height="40" interaction="false"></get-object>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class="row">
+			<div class="col-xs-6 no-margin-padding-left-right v text-1 animated zoomInRight ms750">
+				Total IT Spend vs Budget
+			</div>
+			<div class="col-xs-6 text-xs-right animated zoomInRight ms750">
+				<div class="legend-holder"><div class="legend qlik-blue"></div>Spend</div>
+				<div class="legend-holder"><div class="legend qlik-orange"></div>Budget</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 no-margin-padding-left-right">
+				<get-object qvid="'ExHHdnv'" height="200" animation="zoomInRight ms750" header="false"></get-object>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row detail">
+	<div class="col-xs-12">
+		<span class="v title-2 animated zoomInRight ms1000">BUDGET DETAILS</span>
+	</div>
+</div>
+<div class="row row-padding">
+	<div class="col-xs-12 animated zoomInRight ms1000">
+		<multi-get-object data="multiGetObject" height="300" animation="zoomInRight ms1000"></multi-get-object>
+		<!--<multi-visualization data="multiGetObjectViz" height="300" animation="zoomInRight ms1000"></multi-visualizationt>-->
+	</div>
+</div>
+
+<div class="row row-padding">
+	<div class="col-md-6 animated zoomInRight ms1250">
+		<get-object qvid="'JNgAan'" height="300"></get-object>
+		<div class="col-xs-12 animated zoomInRight ms1250">
+			<div class="legend-holder"><div class="legend qlik-blue"></div>Spend</div>
+			<div class="legend-holder"><div class="legend qlik-orange circle"></div>Budget</div>
+		</div>
+	</div>
+	<div class="col-md-6 animated zoomInRight ms1500">
+		<!-- This causes issues on 320px mobile-->
+		<!--THIS IS IT MAN-->
+		<get-object qvid="'dzfmyXZ'" height="300"></get-object>
+		<div class="col-xs-12 text-xs-right animated zoomInRight ms1500">
+			<div class="legend-holder"><div class="legend qlik-blue"></div>Spend</div>
+			<div class="legend-holder"><div class="legend qlik-orange circle"></div>Budget</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6 row-padding">
+		<div class="row">
+			<div class="col-xs-12 animated zoomInRight ms2000">
+				<get-object qvid="'FpwFTKP'" height="700"></get-object>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 row-padding animated zoomInRight ms2250">
+		<div class="row animated zoomInRight ms1750">
+			<div class="col-xs-12">
+				<get-object qvid="'BFsk'" height="150"></get-object>
+			</div>
+		</div>
+		<div class="row animated zoomInRight ms1750">
+			<div class="col-xs-12">
+				<get-object qvid="'LzEpwkS'" height="550"></get-object>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<div class="row" id="top-nav">
+	<div class="col-xs no-margin-padding brand">
+		INFORMATION TECHNOLOGY
+	</div>
+	<div class="col-xs-3 text-right no-margin-padding filters" ng-if="!isMobile">
+		<a ng-click="toggleFilter()">
+			FILTERS
+			<i class="fa fa-bars" aria-hidden="true" ng-show="!isVisible.filter"></i>
+			<i class="fa fa-times" aria-hidden="true" ng-show="isVisible.filter"></i>
+			<!--<span ng-show="isVisible.filter" class="close"> &times;</span>-->
+		</a>
+	</div>
+</div>
+
+<div class="row" ng-show="!isMobile || (isMobile && !isVisible.navigation)">
+	<div class="col-md-12 no-margin-padding">
+		<get-selection-object data-data=""></get-selection-object>
+	</div>
+</div>

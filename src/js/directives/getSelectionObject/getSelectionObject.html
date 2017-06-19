@@ -1,0 +1,28 @@
+<div class="get-selection-object"> 
+	<ul>  
+		<li><strong>SELECTIONS: </strong></li>  
+		<li ng-if="!selections.length" class="no-selections">None</li>  
+		<li ng-repeat="item in selections">
+			<span ng-if="item.selected.length==1">{{item.field}}: {{item.selected[0]}}</span>
+			<button type="button" class="close" aria-label="Close" ng-click="clearField(item.field)" ng-if="item.selected.length==1"> 
+				 <span aria-hidden="true"> &times;</span> 
+			</button> 
+			<div class="dropdown" ng-if="item.selected.length>1">  
+				<!-- data-toggle="dropdown" ng-click="toggle()"-->
+				<a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" data-target="#" aria-haspopup="true" aria-expanded="false" >  
+					{{item.field}} : {{item.selected.length}} of {{item.total}}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">  
+					<span class="dropdown-item" ng-repeat="multipleSubItem in item.selected">
+						{{multipleSubItem.qName}}
+						<button type="button" class="close" aria-label="Close" ng-click="clearFieldItem(item.field, multipleSubItem.qName)"> 
+							<span aria-hidden="true">&times;</span> 
+						</button> 
+					</span>
+					<!--<a class="dropdown-item" href="#" ng-repeat="multipleSubItem in item.selected">{{multipleSubItem.qName}}</a> -->
+				</div>  
+			</div>
+		</li>
+		<li class="clear" ng-show="selectedFields.length && !isMobile"><a ng-click="clearAll()">Clear All</a></li>  
+	</ul>  
+</div>  
