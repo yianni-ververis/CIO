@@ -17,6 +17,7 @@ README
 5. Install Node and Bower dependencies on your local by running the following commands:
 
 	- npm install
+	- npm install --global gulp-cli
 
 6. Then run the following to build the app and load the local server.
 
