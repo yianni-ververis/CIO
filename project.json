@@ -3,7 +3,7 @@
 	"version": "1.8",
 	"name": "CIO",
 	"dist": "dist/",
-	"ga": "UA-XXXXXXXX-XX",
+	"ga": "UA-67745380-38",
 	"local": {
 		"host": "localhost",
 		"port": 4848,
