@@ -24,3 +24,5 @@ README
 	- gulp
 
 7. You can view your files at http://localhost:3000
+
+8. You can preview it at https://webapps.qlik.com/CIO/index.html
